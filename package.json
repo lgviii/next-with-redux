@@ -1,0 +1,27 @@
+{
+  "name": "nextjs-auth",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "firebase": "^7.14.5",
+    "firebaseui": "^4.5.0",
+    "next": "9.4.2",
+    "next-redux-wrapper": "^6.0.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.5",
+    "@types/react": "^16.9.35",
+    "typescript": "^3.9.3"
+  }
+}
