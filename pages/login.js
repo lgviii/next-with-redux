@@ -1,5 +1,4 @@
-import Page from "../components/page";
-import React, { useEffect } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
 
 const AuthUI = dynamic(() => import("../components/auth-ui"), {
@@ -8,7 +7,7 @@ const AuthUI = dynamic(() => import("../components/auth-ui"), {
 
 export default function Login() {
   return (
-    <Page>
+    <div>
       <link
         type="text/css"
         rel="stylesheet"
@@ -25,6 +24,6 @@ export default function Login() {
         Log in here...
       </h1>
       <AuthUI />
-    </Page>
+    </div>
   );
 }

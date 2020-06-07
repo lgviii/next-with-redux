@@ -15,8 +15,10 @@ const composeType = () => {
   }
 };
 
-export const makeStore = () => {
-  return createStore(rootReducer, composeType());
+export const store = createStore(rootReducer, composeType());
+
+const makeStore = () => {
+  return store;
 };
 
 export const wrapper = createWrapper(makeStore, { debug: true });
