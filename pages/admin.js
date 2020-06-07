@@ -1,7 +1,7 @@
 import { isLoggedOn } from "../auth/security-checks";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { LOAD, loadData } from "../pagesWithStores/admin/actions";
+import { loadData } from "../pagesWithStores/admin/actions";
 import { wrapper } from "../store";
 
 export default function Admin() {
@@ -12,9 +12,9 @@ export default function Admin() {
     isLoggedOn(setIsUserLoggedIn);
   }, []);
 
-  const getStaticProps = wrapper.getStaticProps(({ store }) => {
-    store.dispatch({ type: LOAD, payload: "admin" });
-  });
+  // const getStaticProps = wrapper.getStaticProps(({ store }) => {
+  //   store.dispatch({ type: LOAD, payload: "admin" });
+  // });
 
   return (
     <div>
@@ -40,7 +40,7 @@ export default function Admin() {
           >
             You are logged on so you can see all the admin secrets! App: {app}
           </p>
-          <button onClick={() => getStaticProps()}>
+          <button onClick={() => loadData("button one")}>
             Click to get updated info.
           </button>
           <button onClick={() => loadData("stuff")}>Do API Call</button>

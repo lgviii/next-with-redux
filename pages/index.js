@@ -1,8 +1,6 @@
-import Page from "../components/page";
-
 export default function Home() {
   return (
-    <Page>
+    <div>
       <h1
         style={{
           marginTop: "30px",
@@ -23,6 +21,6 @@ export default function Home() {
       >
         This is the landing page...
       </p>
-    </Page>
+    </div>
   );
 }
