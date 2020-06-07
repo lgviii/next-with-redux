@@ -1,11 +1,9 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { MakeStore, createWrapper, Context } from "next-redux-wrapper";
-// import rootReducer from "./rootReducer/index";
-import rootReducer from "./pagesWithStores/admin/reducer";
+import rootReducer from "./rootReducer/index";
 
 const composeType = () => {
-  console.log("redux tool running");
   if (process.browser) {
     return compose(
       applyMiddleware(thunk),
@@ -20,7 +18,5 @@ const composeType = () => {
 export const makeStore = () => {
   return createStore(rootReducer, composeType());
 };
-
-// export const makeStore = (context) => createStore(rootReducer);
 
 export const wrapper = createWrapper(makeStore, { debug: true });

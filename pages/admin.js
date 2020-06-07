@@ -2,12 +2,12 @@ import { isLoggedOn } from "../auth/security-checks";
 import React, { useEffect, useState } from "react";
 import Page from "../components/page";
 import { useSelector } from "react-redux";
-import { LOAD } from "../pagesWithStores/admin/actions";
+import { LOAD, loadData } from "../pagesWithStores/admin/actions";
 import { wrapper } from "../store";
 
 export default function Admin() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-  const app = useSelector((state) => state.app);
+  const app = useSelector((state) => state.admin.app);
 
   useEffect(() => {
     isLoggedOn(setIsUserLoggedIn);
@@ -15,6 +15,10 @@ export default function Admin() {
 
   const getStaticProps = wrapper.getStaticProps(({ store }) => {
     store.dispatch({ type: LOAD, payload: "admin" });
+  });
+
+  const callApiWrapped = wrapper.getStaticProps(({ store }) => {
+    loadData(store.dispatch, "stuff");
   });
 
   return (
@@ -45,6 +49,7 @@ export default function Admin() {
             <button onClick={() => getStaticProps()}>
               Click to get updated info.
             </button>
+            <button onClick={() => callApiWrapped()}>Do API Call</button>
           </div>
         )}
         {isUserLoggedIn == false && (
