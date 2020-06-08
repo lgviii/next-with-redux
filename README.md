@@ -10,8 +10,26 @@ npm run dev
 
 ## Static site will be exported to the `out` directory
 
-npx next build
-
-npx next export
-
 npm run build
+
+# Run locally
+
+`npm install http-server -g`
+
+`http-server`
+
+http://127.0.0.1:8081
+
+You should see you site...
+
+# Setup Project with Firebase Hosting
+
+firebase
+
+firebase init
+
+copy files over to firebase project
+
+Test locally:
+
+firebase serve
