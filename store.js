@@ -7,8 +7,9 @@ const composeType = () => {
   if (process.browser) {
     return compose(
       applyMiddleware(thunk),
-      window.__REDUX_DEVTOOLS_EXTENSION__ &&
-        window.__REDUX_DEVTOOLS_EXTENSION__()
+      window.__REDUX_DEVTOOLS_EXTENSION__
+        ? window.__REDUX_DEVTOOLS_EXTENSION__()
+        : (f) => f
     );
   } else {
     return compose(applyMiddleware(thunk));

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { isLoggedOn, logOut } from "../auth/security-checks";
-import * as firebase from "../auth/firebase-auth";
 // import "../css/Header.css";
 
 const Header = () => {

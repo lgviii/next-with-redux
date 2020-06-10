@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Header from "../components/header";
+import * as firebase from "../auth/firebase-auth";
 
 const Page = (props) => {
   return (
