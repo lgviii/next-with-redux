@@ -15,7 +15,12 @@ export function loadData(inputText) {
     console.log(token);
 
     // fetch("https://jsonplaceholder.typicode.com/todos/1")
-    fetch("https://localhost:5001/weatherforecast")
+    // fetch("https://lin-asp-backend.herokuapp.com/Counter", {
+    fetch("https://localhost:5001/Counter", {
+      headers: new Headers({
+        Authorization: `Bearer ${token}`,
+      }),
+    })
       .then((response) => {
         console.log("api response");
         console.log(response);
@@ -27,7 +32,7 @@ export function loadData(inputText) {
         store.dispatch({
           type: LOAD,
           // payload: inputText + "***" + data.title,
-          payload: inputText + "***" + data.summary,
+          payload: "counter is now = " + data.counter,
         });
       });
   });
