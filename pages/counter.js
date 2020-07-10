@@ -2,10 +2,12 @@ import { isLoggedOn } from "../auth/security-checks";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { loadData, incrementCounter } from "../pagesWithStores/counter/actions";
+import Loading from "../components/loading";
 
 export default function Counter() {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const counterValue = useSelector((state) => state.counter.counterValue);
+  const isLoadingValue = useSelector((state) => state.counter.isPageLoading);
 
   useEffect(() => {
     isLoggedOn(setIsUserLoggedIn);
@@ -14,6 +16,7 @@ export default function Counter() {
 
   return (
     <div>
+      <Loading isLoading={isLoadingValue} />
       {isUserLoggedIn && (
         <div>
           <h1
