@@ -1,7 +1,14 @@
 import { store } from "../../store";
 import * as firebase from "firebase";
 import { apiConfig } from "../../api/config";
-import { createIncrementalCompilerHost } from "typescript";
+
+export function START_LOADING() {
+  "start loading";
+}
+
+export function STOP_LOADING() {
+  "stop loading";
+}
 
 export function COUNTER_INCREMENT() {
   "increment";
@@ -15,7 +22,23 @@ export function COUNTER_LOAD() {
   "decrement";
 }
 
+export function setPageToLoading() {
+  store.dispatch({
+    type: START_LOADING,
+  });
+}
+
+export function setPageToNotLoading() {
+  store.dispatch({
+    type: STOP_LOADING,
+  });
+}
+
 export function loadData() {
+  store.dispatch({
+    type: START_LOADING,
+  });
+
   let currentUser = firebase.auth().currentUser;
 
   if (currentUser === null) {
@@ -44,11 +67,19 @@ export function loadData() {
           type: COUNTER_LOAD,
           payload: data.counter,
         });
+
+        store.dispatch({
+          type: STOP_LOADING,
+        });
       });
   });
 }
 
 export function incrementCounter() {
+  store.dispatch({
+    type: START_LOADING,
+  });
+
   let currentUser = firebase.auth().currentUser;
 
   if (currentUser === null) {
@@ -67,6 +98,10 @@ export function incrementCounter() {
     }).then((data) => {
       store.dispatch({
         type: COUNTER_INCREMENT,
+      });
+
+      store.dispatch({
+        type: STOP_LOADING,
       });
     });
   });

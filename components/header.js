@@ -69,27 +69,6 @@ const Header = () => {
               </button>
             </Link>
             {isUserLoggedIn && (
-              <Link href="/admin">
-                <button
-                  style={{
-                    padding: "1.5rem 2rem",
-                    border: 0,
-                    color: "#08AEEA",
-                    fontSize: "1.2rem",
-                    fontWeight: "bold",
-                    background: "white",
-                    borderRadius: "3px",
-                    transition: "all .2s",
-                    cursor: "pointer",
-                    boxShadow: "0 1.75rem 2rem -.4rem rgba(50, 0, 100, .15)",
-                    marginLeft: "20px",
-                  }}
-                >
-                  Admin Page (You can only see this when logged in...)
-                </button>
-              </Link>
-            )}
-            {isUserLoggedIn && (
               <Link href="/counter">
                 <button
                   style={{
