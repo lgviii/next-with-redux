@@ -1,13 +1,14 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { isLoggedOn, logOut } from "../auth/security-checks";
-// import "../css/Header.css";
+import UserAvatar from "./user-avatar";
 
 const Header = () => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [getUserInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
-    isLoggedOn(setIsUserLoggedIn);
+    isLoggedOn(setIsUserLoggedIn, setUserInfo);
   }, []);
 
   return (
@@ -19,16 +20,26 @@ const Header = () => {
         }}
       >
         <div>
-          <span
+          <div
             style={{
               color: "white",
               textShadow: "0 .5rem 1rem rgba(50, 0, 100, .1)",
-              margin: 0,
+              marginBottom: 17,
               fontSize: "3rem",
+              display: "flex",
+              flexDirection: "row",
             }}
           >
-            NextJS with FireBase Example
-          </span>
+            <div>NextJS with FireBase Example</div>
+            {isUserLoggedIn && getUserInfo && (
+              <div style={{ marginLeft: "auto", marginRight: 0 }}>
+                <UserAvatar
+                  name={getUserInfo.displayName}
+                  imageURL={getUserInfo.photoURL}
+                />
+              </div>
+            )}
+          </div>
           <div style={{ display: "flex", flexDirection: "row" }}>
             <Link href="/">
               <button
@@ -99,6 +110,7 @@ const Header = () => {
               }}
             >
               {isUserLoggedIn ? (
+                // <div>
                 <Link href="/">
                   <button
                     onClick={() => {

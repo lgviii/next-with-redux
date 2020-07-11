@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
+import { logOut } from "../auth/security-checks";
 
 const AuthUI = dynamic(() => import("../components/auth-ui"), {
   ssr: false,
 });
 
 export default function Login() {
+  useEffect(() => {
+    logOut();
+  }, []);
+
   return (
     <div>
       <link
